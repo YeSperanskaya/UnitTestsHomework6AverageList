@@ -29,10 +29,14 @@ public class WorkWithList {
     }
 
     private double getAverageValue(List <Integer> list)  {
+        if(list.isEmpty()) {
+            throw new IllegalArgumentException("Список пуст или не задан.");
+        }
         int sum = 0;
         for (int i = 0; i < list.size(); i++) {
             sum = list.get(i) + sum;
         }
+
         return (double) (sum / list.size());
     }
 

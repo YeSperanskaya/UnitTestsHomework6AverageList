@@ -1,4 +1,5 @@
 import org.example.WorkWithList;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 import java.util.ArrayList;
@@ -52,6 +53,18 @@ public class TestWorkWithList {
         list2.add(4);
         WorkWithList workWithList = new WorkWithList(list1, list2);
         assertThat(workWithList.getMaxAverageValueFromTwoLists()).isEqualTo("Второй список имеет большее среднее значение");
+    }
+
+    @Test
+    void getTestAverageValueEmptyList() {
+        List<Integer> list = new ArrayList<>();
+        WorkWithList workWithList = new WorkWithList(list,list);
+        try {
+            workWithList.getAverageValueList1();
+            Assertions.fail("Ошибка не была выброшена");
+        } catch (IllegalArgumentException e) {
+            Assertions.assertTrue(e.getMessage().contains("Список пуст или не задан."));
+        }
     }
 
 }
