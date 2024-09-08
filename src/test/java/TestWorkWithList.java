@@ -67,4 +67,32 @@ public class TestWorkWithList {
         }
     }
 
+    @Test
+    void getTestAverageZero() {
+        List<Integer> list = new ArrayList<>();
+        list.add(0);
+        list.add(-1);
+        list.add(1);
+        WorkWithList workWithList = new WorkWithList(list,list);
+        assertThat(workWithList.getAverageValueList1()).isEqualTo(0.0);
+    }
+
+    @Test
+    void getTestAveragePositive() {
+        List<Integer> list = new ArrayList<>();
+        list.add(2);
+        list.add(2);
+        WorkWithList workWithList = new WorkWithList(list,list);
+        assertThat(workWithList.getAverageValueList1()).isEqualTo(2.0);
+    }
+
+    @Test
+    void getTestAverageNegative() {
+        List<Integer> list = new ArrayList<>();
+        list.add(-2);
+        list.add(-2);
+        WorkWithList workWithList = new WorkWithList(list,list);
+        assertThat(workWithList.getAverageValueList1()).isEqualTo(-2.0);
+    }
+
 }
